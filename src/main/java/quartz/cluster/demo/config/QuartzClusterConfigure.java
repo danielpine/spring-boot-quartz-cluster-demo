@@ -99,6 +99,7 @@ public class QuartzClusterConfigure {
                 jobDetail.getKey().getName();
                 CronTrigger cronTrigger = TriggerBuilder
                         .newTrigger()
+                        .withIdentity(trigger.name(), trigger.group())
                         .withSchedule(CronScheduleBuilder.cronSchedule(trigger.cron()))
                         .build();
                 try {
