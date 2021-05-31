@@ -143,3 +143,110 @@
 2021-05-31 13:32:38.882  INFO 195472 --- [RMI TCP Connection(4)-127.0.0.1] org.quartz.core.QuartzScheduler          : Scheduler schedulerFactoryBean_$_danielpine1622438723480 shutdown complete.
 2021-05-31 13:32:38.883  INFO 195472 --- [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Shutdown initiated...
 2021-05-31 13:32:38.889  INFO 195472 --- [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Shutdown completed.
+2021-05-31 14:42:09.105  INFO 20824 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : Starting QuartzClusterApplication on danielpine with PID 20824 (D:\source\spring-boot-quartz-cluster-demo\target\classes started by danielpine in D:\source\spring-boot-quartz-cluster-demo)
+2021-05-31 14:42:09.108  INFO 20824 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : No active profile set, falling back to default profiles: default
+2021-05-31 14:42:09.154  INFO 20824 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@48304b7f: startup date [Mon May 31 14:42:09 CST 2021]; root of context hierarchy
+2021-05-31 14:42:09.947  INFO 20824 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Starting...
+2021-05-31 14:42:10.139  INFO 20824 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Start completed.
+2021-05-31 14:42:10.194  INFO 20824 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2021-05-31 14:42:10.203  INFO 20824 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-05-31 14:42:10.203  INFO 20824 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.0 created.
+2021-05-31 14:42:10.206  INFO 20824 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : Using db table-based data access locking (synchronization).
+2021-05-31 14:42:10.208  INFO 20824 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : JobStoreCMT initialized.
+2021-05-31 14:42:10.208  INFO 20824 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.0) 'schedulerFactoryBean' with instanceId 'danielpine1622443330195'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2021-05-31 14:42:10.208  INFO 20824 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+2021-05-31 14:42:10.208  INFO 20824 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.0
+2021-05-31 14:42:10.208  INFO 20824 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: quartz.cluster.demo.config.AutoWiredSpringBeanToJobFactory@67e3e45f
+2021-05-31 14:42:10.471  INFO 20824 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-31 14:42:10.488  INFO 20824 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2021-05-31 14:42:10.489  INFO 20824 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2021-05-31 14:42:10.495  INFO 20824 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2021-05-31 14:42:10.500  INFO 20824 --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2021-05-31 14:42:10.500  INFO 20824 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2021-05-31 14:42:10.516  INFO 20824 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler schedulerFactoryBean_$_danielpine1622443330195 started.
+2021-05-31 14:42:10.527  INFO 20824 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : Started QuartzClusterApplication in 1.765 seconds (JVM running for 5.039)
+2021-05-31 14:43:00.028  INFO 20824 --- [schedulerFactoryBean_Worker-1] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:43:00.028  INFO 20824 --- [schedulerFactoryBean_Worker-1] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
+2021-05-31 14:43:23.654  INFO 23432 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : Starting QuartzClusterApplication on danielpine with PID 23432 (D:\source\spring-boot-quartz-cluster-demo\target\classes started by danielpine in D:\source\spring-boot-quartz-cluster-demo)
+2021-05-31 14:43:23.657  INFO 23432 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : No active profile set, falling back to default profiles: default
+2021-05-31 14:43:23.691  INFO 23432 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@43f2dedb: startup date [Mon May 31 14:43:23 CST 2021]; root of context hierarchy
+2021-05-31 14:43:24.358  INFO 23432 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Starting...
+2021-05-31 14:43:24.562  INFO 23432 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Start completed.
+2021-05-31 14:43:24.619  INFO 23432 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2021-05-31 14:43:24.627  INFO 23432 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-05-31 14:43:24.627  INFO 23432 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.0 created.
+2021-05-31 14:43:24.630  INFO 23432 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : Using db table-based data access locking (synchronization).
+2021-05-31 14:43:24.632  INFO 23432 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : JobStoreCMT initialized.
+2021-05-31 14:43:24.633  INFO 23432 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.0) 'schedulerFactoryBean' with instanceId 'danielpine1622443404620'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2021-05-31 14:43:24.634  INFO 23432 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+2021-05-31 14:43:24.634  INFO 23432 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.0
+2021-05-31 14:43:24.634  INFO 23432 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: quartz.cluster.demo.config.AutoWiredSpringBeanToJobFactory@d774054
+2021-05-31 14:43:24.877  INFO 23432 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-31 14:43:24.892  INFO 23432 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2021-05-31 14:43:24.893  INFO 23432 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2021-05-31 14:43:24.896  INFO 23432 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2021-05-31 14:43:24.899  INFO 23432 --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2021-05-31 14:43:24.899  INFO 23432 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2021-05-31 14:43:24.911  INFO 23432 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler schedulerFactoryBean_$_danielpine1622443404620 started.
+2021-05-31 14:43:24.921  INFO 23432 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : Started QuartzClusterApplication in 1.497 seconds (JVM running for 4.484)
+2021-05-31 14:43:39.915  INFO 23432 --- [QuartzScheduler_schedulerFactoryBean-danielpine1622443404620_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: detected 1 failed or restarted instances.
+2021-05-31 14:43:39.916  INFO 23432 --- [QuartzScheduler_schedulerFactoryBean-danielpine1622443404620_ClusterManager] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Scanning for instance "danielpine1622443330195"'s failed in-progress jobs.
+2021-05-31 14:44:00.027  INFO 23432 --- [schedulerFactoryBean_Worker-1] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:44:00.027  INFO 23432 --- [schedulerFactoryBean_Worker-1] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
+2021-05-31 14:44:53.336  INFO 9412 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : Starting QuartzClusterApplication on danielpine with PID 9412 (D:\source\spring-boot-quartz-cluster-demo\target\classes started by danielpine in D:\source\spring-boot-quartz-cluster-demo)
+2021-05-31 14:44:53.340  INFO 9412 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : No active profile set, falling back to default profiles: default
+2021-05-31 14:44:53.376  INFO 9412 --- [restartedMain] s.c.a.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@26b1a59a: startup date [Mon May 31 14:44:53 CST 2021]; root of context hierarchy
+2021-05-31 14:44:54.037  INFO 9412 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Starting...
+2021-05-31 14:44:54.247  INFO 9412 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : DatebookHikariCP - Start completed.
+2021-05-31 14:44:54.298  INFO 9412 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2021-05-31 14:44:54.308  INFO 9412 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2021-05-31 14:44:54.308  INFO 9412 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.0 created.
+2021-05-31 14:44:54.311  INFO 9412 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : Using db table-based data access locking (synchronization).
+2021-05-31 14:44:54.312  INFO 9412 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : JobStoreCMT initialized.
+2021-05-31 14:44:54.313  INFO 9412 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.0) 'schedulerFactoryBean' with instanceId 'danielpine1622443494299'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 20 threads.
+  Using job-store 'org.springframework.scheduling.quartz.LocalDataSourceJobStore' - which supports persistence. and is clustered.
+
+2021-05-31 14:44:54.313  INFO 9412 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+2021-05-31 14:44:54.313  INFO 9412 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.0
+2021-05-31 14:44:54.313  INFO 9412 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: quartz.cluster.demo.config.AutoWiredSpringBeanToJobFactory@6757face
+2021-05-31 14:44:54.562  INFO 9412 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-05-31 14:44:54.578  INFO 9412 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2021-05-31 14:44:54.580  INFO 9412 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'dataSource' has been autodetected for JMX exposure
+2021-05-31 14:44:54.586  INFO 9412 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2021-05-31 14:44:54.590  INFO 9412 --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2021-05-31 14:44:54.590  INFO 9412 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2021-05-31 14:44:54.602  INFO 9412 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: detected 1 failed or restarted instances.
+2021-05-31 14:44:54.602  INFO 9412 --- [restartedMain] o.s.s.quartz.LocalDataSourceJobStore     : ClusterManager: Scanning for instance "danielpine1622443404620"'s failed in-progress jobs.
+2021-05-31 14:44:54.606  INFO 9412 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler schedulerFactoryBean_$_danielpine1622443494299 started.
+2021-05-31 14:44:54.616  INFO 9412 --- [restartedMain] q.cluster.demo.QuartzClusterApplication  : Started QuartzClusterApplication in 1.517 seconds (JVM running for 4.355)
+2021-05-31 14:45:00.025  INFO 9412 --- [schedulerFactoryBean_Worker-1] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:45:00.025  INFO 9412 --- [schedulerFactoryBean_Worker-1] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
+2021-05-31 14:46:00.016  INFO 9412 --- [schedulerFactoryBean_Worker-2] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:46:00.017  INFO 9412 --- [schedulerFactoryBean_Worker-2] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
+2021-05-31 14:47:00.013  INFO 9412 --- [schedulerFactoryBean_Worker-3] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:47:00.013  INFO 9412 --- [schedulerFactoryBean_Worker-3] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
+2021-05-31 14:48:00.015  INFO 9412 --- [schedulerFactoryBean_Worker-4] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:48:00.015  INFO 9412 --- [schedulerFactoryBean_Worker-4] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
+2021-05-31 14:49:00.012  INFO 9412 --- [schedulerFactoryBean_Worker-5] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:49:00.012  INFO 9412 --- [schedulerFactoryBean_Worker-5] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
+2021-05-31 14:50:00.014  INFO 9412 --- [schedulerFactoryBean_Worker-6] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务时间到了---------------------
+2021-05-31 14:50:00.014  INFO 9412 --- [schedulerFactoryBean_Worker-6] quartz.cluster.demo.timer.QuartzTaskJob  : --------------定时任务执行逻辑---------------------
