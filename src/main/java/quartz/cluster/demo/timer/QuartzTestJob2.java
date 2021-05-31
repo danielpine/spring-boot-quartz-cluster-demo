@@ -1,9 +1,11 @@
 package quartz.cluster.demo.timer;
 
-import org.quartz.*;
+import org.quartz.DisallowConcurrentExecution;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.PersistJobDataAfterExecution;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import quartz.cluster.demo.annotation.QuartzTrigger;
 import quartz.cluster.demo.service.SpiderTaskExecutor;
@@ -17,20 +19,14 @@ import javax.annotation.Resource;
 @Component
 @PersistJobDataAfterExecution
 @DisallowConcurrentExecution
-@QuartzTrigger(cron = "0 0/1 * * * ?", group = "spider", name = "task")
-public class QuartzTaskJob implements Job {
-    private static final Logger logger = LoggerFactory.getLogger(QuartzTaskJob.class);
-
+@QuartzTrigger(cron = "0/5 * * * * ?", group = "spider", name = "test2")
+public class QuartzTestJob2 implements Job {
+    private static final Logger logger = LoggerFactory.getLogger(QuartzTestJob2.class);
     @Resource
     private SpiderTaskExecutor spiderTaskExecutor;
 
-    /**
-     * 核心方法,Quartz Job真正的执行逻辑.
-     *
-     * @param context JobExecutionContext 中封装有Quartz运行所需要的所有信息
-     */
     @Override
     public void execute(JobExecutionContext context) {
-        spiderTaskExecutor.saveCommodityQuotes();
+        System.out.println("@Scheduled job2");
     }
 }

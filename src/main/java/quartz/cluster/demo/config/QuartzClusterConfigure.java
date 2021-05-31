@@ -1,12 +1,13 @@
 package quartz.cluster.demo.config;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import org.quartz.JobDetail;
-import org.quartz.Trigger;
+import org.quartz.*;
 import org.quartz.spi.JobFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,22 +21,27 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
+import quartz.cluster.demo.annotation.QuartzTrigger;
 import quartz.cluster.demo.timer.QuartzTaskJob;
 
 @Configuration
 public class QuartzClusterConfigure {
     // 配置文件路径
     private static final String QUARTZ_CONFIG = "/quartz.properties";
-    
+
     @Autowired
     @Qualifier(value = "dataSource")
     private DataSource dataSource;
-    
+
     @Value("${quartz.cronExpression}")
     private String cronExpression;
 
+    @Autowired
+    private List<Job> jobs;
+
     /**
      * 从quartz.properties文件中读取Quartz配置属性
+     *
      * @return
      * @throws IOException
      */
@@ -46,11 +52,11 @@ public class QuartzClusterConfigure {
         propertiesFactoryBean.afterPropertiesSet();
         return propertiesFactoryBean.getObject();
     }
-    
+
     /**
      * JobFactory与schedulerFactoryBean中的JobFactory相互依赖,注意bean的名称
      * 在这里为JobFactory注入了Spring上下文
-     * 
+     *
      * @param applicationContext
      * @return
      */
@@ -62,50 +68,49 @@ public class QuartzClusterConfigure {
     }
 
     /**
-     * 
-     * @param buttonJobFactory  为SchedulerFactory配置JobFactory
-     * @param cronJobTrigger  
+     * @param buttonJobFactory 为SchedulerFactory配置JobFactory
      * @return
      * @throws IOException
      */
     @Bean
-    public SchedulerFactoryBean schedulerFactoryBean(JobFactory buttonJobFactory, Trigger... cronJobTrigger) throws IOException {
+    public SchedulerFactoryBean schedulerFactoryBean(JobFactory buttonJobFactory) throws IOException, SchedulerException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
-        factory.setJobFactory(buttonJobFactory);
         factory.setOverwriteExistingJobs(true);
         factory.setAutoStartup(true); // 设置自行启动
         factory.setQuartzProperties(quartzProperties());
-        factory.setTriggers(cronJobTrigger);
         factory.setDataSource(dataSource);// 使用应用的dataSource替换quartz的dataSource
+        factory.setJobFactory(buttonJobFactory);
         return factory;
     }
 
-    /**
-     * 配置JobDetailFactory
-     * JobDetailFactoryBean与CronTriggerFactoryBean相互依赖,注意bean的名称
-     * 
-     * @return
-     */
-    @Bean
-    public JobDetailFactoryBean buttonobDetail() {
-         //集群模式下必须使用JobDetailFactoryBean，MethodInvokingJobDetailFactoryBean 类中的 methodInvoking 方法，是不支持序列化的
-         JobDetailFactoryBean jobDetail = new JobDetailFactoryBean();
-         jobDetail.setDurability(true); 
-         jobDetail.setRequestsRecovery(true);
-         jobDetail.setJobClass(QuartzTaskJob.class); 
-         return jobDetail; 
+    @Bean(name = "scheduler")
+    public Scheduler scheduler(SchedulerFactoryBean schedulerFactoryBean) throws SchedulerException {
+        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        scheduler.clear();
+        jobs.forEach(job -> {
+            Class<? extends Job> jobClass = job.getClass();
+            QuartzTrigger trigger = jobClass.getAnnotation(QuartzTrigger.class);
+            if (Objects.nonNull(trigger)) {
+                JobDetail jobDetail = JobBuilder
+                        .newJob(jobClass)
+                        .withIdentity(trigger.name(), trigger.group())
+                        .storeDurably()
+                        .build();
+                jobDetail.getKey().getName();
+                CronTrigger cronTrigger = TriggerBuilder
+                        .newTrigger()
+                        .withSchedule(CronScheduleBuilder.cronSchedule(trigger.cron()))
+                        .build();
+                try {
+                    scheduler.scheduleJob(jobDetail, cronTrigger);
+                    System.out.println("Scheduled Job " + jobClass.getName() + " with " + trigger.cron());
+                } catch (SchedulerException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        return scheduler;
     }
-    /**
-     * 配置具体执行规则
-     * @param buttonobDetail
-     * @return
-     */
-    @Bean
-    public CronTriggerFactoryBean cronJobTrigger(JobDetail buttonobDetail) {
-        CronTriggerFactoryBean tigger = new CronTriggerFactoryBean();
-        tigger.setJobDetail(buttonobDetail);
-        tigger.setStartDelay(2000);   //延迟启动
-        tigger.setCronExpression(cronExpression);  //从application.yml文件读取
-        return tigger;
-    }
+
+
 }
