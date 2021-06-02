@@ -1,23 +1,23 @@
 server:
   port: 8081
 
-logging: 
-    file: logback.xml
-    
-spring: 
-    dataSource: 
-        url: jdbc:mysql://localhost:3306/quartz?characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
-        username: root
-        password: root
-        driver-class-name: com.mysql.jdbc.Driver
-        type: com.zaxxer.hikari.HikariDataSource
-        hikari:
-            minimum-idle: 5
-            maximum-pool-size: 15
-            idle-timeout: 30000
-            pool-name: DatebookHikariCP
-            max-lifetime: 1800000
-            connection-timeout: 30000
-            connection-test-query: 'SELECT 1'
+logging:
+  config: classpath:logback-spring.xml
+
+spring:
+  dataSource:
+    url: jdbc:mysql://localhost:3306/quartz?characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: 'SELECT 1'
 quartz:
-    cronExpression: 0 0/1 * * * ? 
+  enabled: true
